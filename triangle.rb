@@ -14,7 +14,26 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
+  if a < 0 || b < 0 || c < 0
+  	raise TriangleError, "Valores negativos" 
+  elsif a == 0 || b == 0 || c == 0
+  	raise TriangleError, "Lados não podem ser nulos"
+  end
+
+  lados = [a,b,c]
+  lados = lados.sort
+  
+  if lados[0] + lados[1] <= lados[2]
+  	raise TriangleError, "não satisfaz as condições necessárias para ser um triângulo"
+  end
+
+  if a == b and b == c
+    :equilateral
+  elsif a == b or b == c or a == c
+    :isosceles
+  else
+    :scalene
+  end
 end
 
 # Error class used in part 2.  No need to change this code.
